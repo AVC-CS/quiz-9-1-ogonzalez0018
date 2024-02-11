@@ -7,24 +7,26 @@
 
 TEST_CASE("Ex1 ", "[example]")
 {
-	struct Node *head, *tmp;
+	Student *head, *tmp;
+	int N = 10;
 	int length;
 
-	head = makeNumbers(10);
-	struct Node *ptr = head;
-
+	head = makeStudent(N);
+	printStudent(head);
 	length = getLength(head);
 	cout << "The length of the list " << length << endl;
+
 	REQUIRE(length == 10);
-	printNumbers(head);
-	head = sortNumbers(head);
-	printNumbers(head);
+
+	head = sortStudent(head, 1);
+	printStudent(head);
 	tmp = head;
 	for (int i = 0; i < length - 1; i++)
 	{
-		REQUIRE(tmp->value <= tmp->next->value);
+		REQUIRE(tmp->sum <= tmp->next->sum);
 		tmp = tmp->next;
 	}
-	cout << "--------------------------------------------------\n";
-	cout << "--------------------------------------------------\n";
+	head = sortStudent(head, 0);
+	printStudent(head);
+	REQUIRE(head->sum == 200);
 }
