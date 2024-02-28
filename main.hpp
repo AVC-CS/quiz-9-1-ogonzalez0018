@@ -46,3 +46,18 @@ Student *makeStudent(int N)
     return head;
 }
 
+void printStudent(Student *head)
+{
+    Student *ptr = head;
+    while (ptr != NULL)
+    {
+        cout << ptr->id << "\t";
+        cout << ptr->name << "\t";
+        cout << ptr->score[0] << "\t";
+        cout << ptr->score[1] << "\t";
+        cout << ptr->sum << "\t";
+        cout << ptr->avg << "\n";
+        ptr = ptr->next;
+    }
+    cout << endl;
+}
