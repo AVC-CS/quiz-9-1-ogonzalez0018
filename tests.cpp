@@ -3,6 +3,7 @@
 #include <iostream>
 #include "catch.hpp"
 #include "main.hpp"
+
 // tests for exercise 1
 
 TEST_CASE("Ex1 ", "[example]")

@@ -1,9 +1,11 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+#include <string> 
 using namespace std;
 
 const int NUMCOURSE = 2;
+
 struct Student
 {
     int id;
@@ -13,48 +15,34 @@ struct Student
     double avg;
     struct Student *next;
 };
-#define struct Student Student;
-// typedef struct Student Student;
 
-Student *makeStudent(int N);
-void printStudent(Student *head);
-int getLength(Student *head);
-Student *sortStudent(Student *head, int asc);
 
 Student *makeStudent(int N)
 {
-    /*******************************
-     * Code your program here
-     *******************************/
-}
-void printStudent(Student *head)
-{
+    Student *head = new Student;
     Student *ptr = head;
-    while (ptr != NULL)
+
+    for (int i = 1; i <= N; i++)
     {
-        cout << ptr->id << "\t";
-        cout << ptr->name << "\t";
-        cout << ptr->score[0] << "\t";
-        cout << ptr->score[1] << "\t";
-        cout << ptr->sum << "\t";
-        cout << ptr->avg << "\n";
-        ptr = ptr->next;
+        ptr->id = i;
+        ptr->name = "Student" + to_string(i);
+        ptr->score[0] = 10;
+        ptr->score[1] = 20;
+        ptr->sum = 200;
+
+        ptr->avg = ptr->sum / NUMCOURSE;
+
+        if (i < N)
+        {
+            ptr->next = new Student;
+            ptr = ptr->next;
+        }
+        else
+        {
+            ptr->next = NULL;
+        }
     }
-    cout << endl;
-    /*******************************
-     * Code your program here
-     *******************************/
-}
-int getLength(Student *head)
-{
-    /*******************************
-     * Code your program here
-     *******************************/
-}
-Student *sortStudent(Student *head, int asc)
-{
-    /*******************************
-     * Code your program here
-     *******************************/
+
     return head;
 }
+
