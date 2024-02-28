@@ -72,4 +72,72 @@ int getLength(Student *head)
     }
     return length;
 }
+Student *sortStudent(Student *head, int asc)
+{
+    Student *ptr1, *ptr2;
+    int temp;
+    double tempd;
 
+    for (ptr1 = head; ptr1 != NULL; ptr1 = ptr1->next)
+    {
+        for (ptr2 = ptr1->next; ptr2 != NULL; ptr2 = ptr2->next)
+        {
+            if (asc)
+            {
+                if (ptr1->sum > ptr2->sum)
+                {
+                    temp = ptr1->id;
+                    ptr1->id = ptr2->id;
+                    ptr2->id = temp;
+
+                    ptr1->name.swap(ptr2->name);
+
+                    temp = ptr1->score[0];
+                    ptr1->score[0] = ptr2->score[0];
+                    ptr2->score[0] = temp;
+
+                    temp = ptr1->score[1];
+                    ptr1->score[1] = ptr2->score[1];
+                    ptr2->score[1] = temp;
+
+                    tempd = ptr1->sum;
+                    ptr1->sum = ptr2->sum;
+                    ptr2->sum = tempd;
+
+                    tempd = ptr1->avg;
+                    ptr1->avg = ptr2->avg;
+                    ptr2->avg = tempd;
+                }
+            }
+            else
+            {
+                if (ptr1->sum < ptr2->sum)
+                {
+                    temp = ptr1->id;
+                    ptr1->id = ptr2->id;
+                    ptr2->id = temp;
+
+                    ptr1->name.swap(ptr2->name);
+
+                    temp = ptr1->score[0];
+                    ptr1->score[0] = ptr2->score[0];
+                    ptr2->score[0] = temp;
+
+                    temp = ptr1->score[1];
+                    ptr1->score[1] = ptr2->score[1];
+                    ptr2->score[1] = temp;
+
+                    tempd = ptr1->sum;
+                    ptr1->sum = ptr2->sum;
+                    ptr2->sum = tempd;
+
+                    tempd = ptr1->avg;
+                    ptr1->avg = ptr2->avg;
+                    ptr2->avg = tempd;
+                }
+            }
+        }
+    }
+
+    return head;
+}
