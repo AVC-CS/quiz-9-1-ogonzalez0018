@@ -61,3 +61,15 @@ void printStudent(Student *head)
     }
     cout << endl;
 }
+int getLength(Student *head)
+{
+    int length = 0;
+    Student *ptr = head;
+    while (ptr != NULL)
+    {
+        length++;
+        ptr = ptr->next;
+    }
+    return length;
+}
+
